@@ -51,6 +51,7 @@ class CheckoutPage extends StatefulWidget {
   State<CheckoutPage> createState() => _CheckoutPageState();
 }
 
+//вот это чудовище здесь для того чтоб хранить стейт полей для ввода и по ним валидировать
 class _CheckoutPageState extends State<CheckoutPage> {
   final Map<String, TextEditingController> controllers = {
     "emailController": TextEditingController(),
@@ -159,14 +160,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
                             text:
                                 "Оплатить ${state.checkout!.tour_price + state.checkout!.fuel_charge + state.checkout!.service_charge} ₽",
                             onPressed: () {
-                              //setState(() {});
-                              //_formKey.currentState!.validate();
-                              //var valid = true;
-                              //controllers.forEach((key, controller) {
-                              //  print(controller.text);
-                              //   if (controller.text.isEmpty) valid = false;
-                              // });
-                              //print(valid);
                               if ((_formKey.currentState!.validate())) {
                                 Navigator.push(
                                   context,
@@ -177,10 +170,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
                               } else {
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(const SnackBar(
-                                      
                                   content: Padding(
                                     padding: EdgeInsets.all(16),
-                                    child: Text("Поля заполенны неверно, либо пусты"),
+                                    child: Text(
+                                        "Поля заполенны неверно, либо пусты"),
                                   ),
                                 ));
                               }

@@ -17,10 +17,8 @@ class InputField extends StatefulWidget {
     required this.validator,
     required this.validateFunc,
     required this.formKey,
-    //required this.hasError
-    //this.onTap
   });
-  //final bool? hasError;
+
   final String? Function(String?)? validator;
   final String? label;
   final void Function(String?)? onChange;
@@ -37,65 +35,42 @@ class InputField extends StatefulWidget {
 }
 
 class _InputFieldState extends State<InputField> {
-  //final TextEditingController controller2 = TextEditingController();
 
-  //final void Function()? onTap;
   final Color noErrorColor = const Color(0xffF6F6F9);
-
   final Color errorColor = const Color(0xffEB5757);
-
-  late var currentColor;
-
- 
+  late Color currentColor;
 
   @override
   void initState() {
     currentColor = noErrorColor;
-
-    //WidgetsBinding.instance
-    //.addPostFrameCallback((_) => );
-
     super.initState();
   }
 
-
-
-
-  //late Color currentColor;
   @override
   Widget build(BuildContext context) {
-    Random r = Random();
-    var name = r.nextInt(100000).toString();
-    print(name);
     return Material(
       borderRadius: BorderRadius.circular(10),
       color: (widget.validateFunc(widget.controller.text)) ? noErrorColor : errorColor.withOpacity(0.15),
       child: SizedBox(
-          //height: 52,
+          height: 52,
           child: TextFormField(
             key: widget.formKey,
             controller: widget.controller,
             textCapitalization:
                 widget.textCapitalization ?? TextCapitalization.none,
             focusNode: widget.focus,
-            //onTap: widget.onTap,
-            //onChanged:widget.onChange,
             validator: widget.validator,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             inputFormatters: widget.inputFormatters,
             onChanged: (text) {
-              setState(() {
-
-              });
-
+              setState(() {});
             },
-
             keyboardType: widget.keyboardType,
-            //controller: controller2,
+           
             style: const TextStyle(
                 fontSize: 16, fontWeight: FontWeight.w400),
             decoration: InputDecoration(            
-                errorStyle: TextStyle(height: 0.001, color: Colors.transparent),
+                errorStyle: const TextStyle(height: 0.001, color: Colors.transparent),
                 border:
                     const OutlineInputBorder(borderSide: BorderSide.none),
                 labelStyle: const TextStyle(
@@ -106,16 +81,14 @@ class _InputFieldState extends State<InputField> {
                     color: Color(0xffA9ABB7),
                     fontSize: 18,
                     fontWeight: FontWeight.w400),
-                    contentPadding: EdgeInsets.all(16),
+                    contentPadding: const EdgeInsets.all(16),
                 label: Padding(
                   padding: const EdgeInsets.only(top: 0),
                   child: Text(widget.label ?? ""),
-                ),
-                
+                ),                
                 isDense: true,
                 isCollapsed: true,
                 alignLabelWithHint: false),
-                
           )),
     );
   }

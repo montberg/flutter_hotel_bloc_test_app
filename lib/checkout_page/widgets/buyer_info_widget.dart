@@ -1,18 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_hotel_test_app/checkout_page/extensions/email_validator_extension.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 import 'input_field.dart';
-
-
-
-
-
-
-
-
-
 
 class ByuerInfoWidget extends StatefulWidget {
   const ByuerInfoWidget({Key? key, required this.phoneNumberController, required this.emailController, required this.emailKey, required this.phoneKey,}) : super(key: key);
@@ -49,8 +39,7 @@ class _ByuerInfoWidgetState extends State<ByuerInfoWidget> {
   
     super.initState();
   }
-  //final emailBloc = FieldValidationBloc();
-  //final phoneBloc = FieldValidationBloc();
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -66,9 +55,6 @@ class _ByuerInfoWidgetState extends State<ByuerInfoWidget> {
         InputField(
           formKey: widget.phoneKey,
           validateFunc: _validatePhoneNumber,
-          //onChange: (text){
-          //  phoneBloc.add(TextChangedEvent(text: text!));
-          //},
           validator: (val) {
             if (_validatePhoneNumber(val!)) {
               return null;
